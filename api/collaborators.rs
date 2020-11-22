@@ -4,10 +4,11 @@ use std::error::Error;
 use utils::collaborators;
 
 fn handler(_: Request) -> Result<impl IntoResponse, NowError> {
-    println!("{}", collaborators);
+    //println!("{}", collaborators);
 	let response = Response::builder()
 		.status(StatusCode::OK)
 		.header("Content-Type", "application/json")
+		.header("Access-Control-Allow-Origin", "*")
 		.body(collaborators.to_string())
 		.expect("Internal Server Error");
 
